@@ -24,11 +24,19 @@ This repository contains the backend for the Event Management System built with 
 6. Nodemailer (for sending emails)
 7. socket.io (for sending In-app notifications)
 
-    **Installation**
+**Installation**
+
 Prerequisites
 Node.js and npm installed
 MongoDB instance (local or remote)
 A Gmail account for sending emails (or another email service provider)
 
+
 Use `npm install` to install dependencies.
+
+# Run the server
+`npm start`
+
+
+
 
