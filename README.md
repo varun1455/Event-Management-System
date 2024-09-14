@@ -22,6 +22,7 @@ This repository contains the backend for the Event Management System built with 
 4. Mongoose
 5. JWT (JSON Web Tokens)
 6. Nodemailer (for sending emails)
+7. socket.io (for sending In-app notifications)
 
     **Installation**
 Prerequisites
