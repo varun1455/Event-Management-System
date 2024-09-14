@@ -1,22 +1,21 @@
-Event Management System Backend
-Overview
+#Event Management System Backend
+
+#Overview
 This repository contains the backend for the Event Management System built with Node.js, Express, and MongoDB. The backend supports functionalities such as event creation, RSVPs, scheduling, notifications, and user authentication.
 
-Features
+#Features
 Event Management
 
 Create, read, and delete events
 List all events
 RSVP to events
 Notifications
-
 Send reminders via email
 User Authentication
-
 Register and log in users
 JWT-based authentication
 
-Technologies
+#Technologies
 Node.js
 Express
 MongoDB
