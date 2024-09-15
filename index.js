@@ -1,5 +1,5 @@
 const express = require("express");
-var http = require('http');
+const http = require('http');
 const app = express();
 const server = http.createServer(app);
 const mongoose = require('mongoose');
@@ -11,6 +11,7 @@ const cookieParser = require('cookie-parser');
 const socketIo = require('socket.io');
 const io = socketIo(server);
 const nodemailer = require('nodemailer');
+
 
 
 
@@ -42,12 +43,12 @@ opts.jwtFromRequest = cookieExtractor;
 opts.secretOrKey = publicKey;
 opts.algorithm = ['RS256'];
 
-server.use(cookieParser());
-server.use(express.json());
-server.use(
+app.use(cookieParser());
+app.use(express.json());
+app.use(
   session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
 );
-server.use(passport.authenticate("session"));
+app.use(passport.authenticate("session"));
 
 
 const transporter = nodemailer.createTransport({
@@ -71,9 +72,9 @@ io.on('connection', (socket) => {
     });
   });
 
-server.use("/auth", authRoute.router);
-server.use("/users",isAuth(), userRoute.router);
-server.use("/events", eventRoute.router);
+app.use("/auth", authRoute.router);
+app.use("/users",isAuth(), userRoute.router);
+app.use("/events",isAuth(), eventRoute.router);
 passport.use(
     new LocalStrategy(
       {usernameField:'email'},
@@ -153,7 +154,7 @@ passport.use(
   
 
 
-  server.post('/notify-event', async (req, res) => {
+  app.post('/notify-event', async (req, res) => {
     const { eventId } = req.body;
   
     try {
@@ -176,7 +177,7 @@ passport.use(
     }
   });
 
-  server.post('/notify-mail', async (req, res) => {
+  app.post('/notify-mail', async (req, res) => {
     const { eventId } = req.body;
   
     try {
@@ -212,7 +213,7 @@ passport.use(
 
 
 
-server.listen(5000, () => {
+app.listen(5000, () => {
     console.log("server started successfully");
   });
   
